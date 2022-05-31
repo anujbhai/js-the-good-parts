@@ -55,4 +55,15 @@ Quo.prototype.get_status = function () {
 var myQuo = new Quo("confused");
 document.writeln(myQuo.get_status());
 
+// 4. Apply invocation
+var applyPattern = [3, 4];
+var sum = add.apply(null, applyPattern);
+
+var statusObject = {
+	status: "A-OK"
+};
+
+var status = Quo.prototype.get_status.apply(statusObject);
+document.writeln(myQuo.get_status());
+
 }) ();
