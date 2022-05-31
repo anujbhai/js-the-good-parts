@@ -11,7 +11,7 @@ var add = function(a, b) {
 };
 
 /* Invocation Patterns */
-// method invocation
+// 1. method invocation
 var myValue = {
 	value: 0,
 	increment: function (inc) {
@@ -28,7 +28,7 @@ document.writeln(myValue.value);
 myValue.increment(2);
 document.writeln(myValue.value);
 
-// function invocation
+// 2. function invocation
 console.log(add(3, 4));
 
 // workaround for binding this to outer function
@@ -44,5 +44,26 @@ myValue.double = function () {
 myValue.double();
 document.writeln(myValue.getValue());
 
+// 3. Constructor invocation
+var Quo = function (string) {
+	this.status = string;
+};
+Quo.prototype.get_status = function () {
+	return this.status;
+};
+
+var myQuo = new Quo("confused");
+document.writeln(myQuo.get_status());
+
+// 4. Apply invocation
+var applyPattern = [3, 4];
+var sum = add.apply(null, applyPattern);
+
+var statusObject = {
+	status: "A-OK"
+};
+
+var status = Quo.prototype.get_status.apply(statusObject);
+document.writeln(myQuo.get_status());
 
 }) ();
