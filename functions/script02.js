@@ -59,4 +59,17 @@ String.method("trim", function () {
 });
 console.log("\"" + "    neat    ".trim() + "\"");
 
+/* Augmenting Types */
+// Towers of hanoi
+var hanoi = function (disc, src, aux, des) {
+	if (disc > 0) {
+		hanoi(disc - 1, src, des, aux);
+
+		document.getElementById("app").innerHTML += "<li>Move disc " + disc + " from " + src + " to " + des +  "</li>";
+
+		hanoi(disc - 1, aux, src, des);
+	}
+};
+hanoi(3, "Source", "Auxilary", "Destination");
+
 }) ();
