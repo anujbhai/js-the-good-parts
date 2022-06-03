@@ -94,7 +94,102 @@ var getElementsByAttribute = function (att, value) {
 
 	return results;
 };
-
 console.log(getElementsByAttribute("data-spare", "just-coding"));
+
+// factorial
+// Tail recursion: returns the result of calling itself
+var factorial = function factorial(i, a) {
+	a = a || 1;
+	if (i < 2) {
+		return a;
+	}
+	return factorial(i - 1, a * i);
+};
+document.writeln("factorial: ", factorial(4));
+
+/* Scope */
+var foo = function () {
+	var a = 3,
+		b = 5;
+
+	console.log("a :", a); // 3
+	console.log("b :", b); // 5
+
+	var bar = function () {
+		var b = 7,
+			c = 11;
+		console.log("a :", a); // 3
+		console.log("b :", b); // 7
+		console.log("c :", c); // 11
+
+		a += b + c;
+		console.log("a :", a); // 21
+		console.log("b :", b); // 7
+		console.log("c :", c); // 11
+	};
+	console.log("a :", a); // 3
+	console.log("b :", b); // 5
+	// console.log("c :", c); // undefined
+
+	// bar();
+
+	console.log("a :", a); // 21
+	console.log("b :", b); // 5
+};
+// console.log(foo());
+
+/* Closure */
+// initializing an object with a funtion literal
+var myValue = function () {
+	var value = 0;
+
+	return {
+		increment: function (inc) {
+			value += typeof inc === "number" ? inc : 1;
+		},
+		getValue: function () {
+			return value;
+		}
+	};
+}();
+console.log("my value: ", myValue.increment(5));
+console.log("my value: ", myValue.getValue());
+
+var quo = function (status) {
+	return {
+		get_status: function () {
+			return status;
+		}
+	};
+};
+var myQuo = quo("amazed");
+document.writeln(myQuo.get_status());
+
+var fade = function (node) {
+	var level = 1;
+	var step = function () {
+		var hex = level.toString(16);
+		node.style.backgroundColor = "#FFF" + hex + hex;
+
+		if (level < 15) {
+			level += 1;
+			setTimeout(step, 100);
+		}
+	};
+	setTimeout(step, 100);
+};
+fade(document.getElementById("app"));
+
+var add_handlers = function (nodes) {
+	var i;
+	for (i = 0; i < nodes.length; i += 1) {
+		nodes[i].onclick = function (i) {
+			return function (e) {
+				console.log(e);
+			};
+		}(i);
+	}
+};
+add_handlers(document.getElementById("app"));
 
 }) ();
