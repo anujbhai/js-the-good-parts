@@ -42,5 +42,10 @@ Array.method("push", function () {
 c = a.push(b, true);
 console.log(c);
 
+// array.reverse()
+a = ["a", "b", "c"];
+var d = a.reverse();
+console.log(d);
+
 
 }) ();
