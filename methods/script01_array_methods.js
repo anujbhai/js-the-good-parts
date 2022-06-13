@@ -126,6 +126,14 @@ r = a.splice(1, 1, "ache", "bug");
 console.log(a);
 console.log(r);
 
+// Array.sort(comparefn)
+var n = [4, 8, 15, 16, 23, 42];
+n.sort()
+console.log(n);
 
+n.sort(function (a, b) {
+	return a - b;
+});
+console.log(n);
 
 }) ();
