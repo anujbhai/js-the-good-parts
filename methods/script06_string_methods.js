@@ -30,3 +30,19 @@ console.log("p", p);
 p = text.indexOf("ss", 6);
 console.log("p", p);
 
+// string.lastIndexOf(searchString, position)
+var p1 = text.lastIndexOf("ss");
+console.log("p1: ", p1);
+
+p1 = text.lastIndexOf("ss", 3);
+console.log("p1: ", p1);
+
+p1 = text.lastIndexOf("ss", 6);
+console.log("p1: ", p1);
+
+// string.localCompare(that)
+var m = ["AAA", "A", "aa", "a", "Aa", "aaa"];
+m.sort(function (a, b) {
+	return a.localeCompare(b);
+});
+
