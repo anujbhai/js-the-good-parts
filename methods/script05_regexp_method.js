@@ -24,7 +24,7 @@ String.method("entityify", function () {
 				return character[c]
 		});
 	};
-}());
+}()); // Classes are compiled to this type of function expression when using TypeScript
 
 // Break a simple html text into tags amd texts.
 
